@@ -2,18 +2,26 @@ package com.github.fcandiotti.pesquisamovie.entities;
 
 import com.github.fcandiotti.pesquisamovie.entities.enums.Platform;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "tb_game")
 public class Game implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Title;
     private Platform platform;
 
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
     private Genre genre;
 
+    @OneToMany(mappedBy = "game")
     private List<Record> records = new ArrayList<>();
 
     public Game() {
