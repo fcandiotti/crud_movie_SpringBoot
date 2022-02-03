@@ -12,7 +12,7 @@ public class Record implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer ege;
+    private Integer age;
     private Instant moment;
 
     @ManyToOne
@@ -22,10 +22,10 @@ public class Record implements Serializable {
     public Record() {
     }
 
-    public Record(Long id, String name, Integer ege, Instant moment, Game game) {
+    public Record(Long id, String name, Integer age, Instant moment, Game game) {
         this.id = id;
         this.name = name;
-        this.ege = ege;
+        this.age = age;
         this.moment = moment;
         this.game = game;
     }
@@ -47,11 +47,11 @@ public class Record implements Serializable {
     }
 
     public Integer getEge() {
-        return ege;
+        return age;
     }
 
     public void setEge(Integer ege) {
-        this.ege = ege;
+        this.age = age;
     }
 
     public Instant getMoment() {
