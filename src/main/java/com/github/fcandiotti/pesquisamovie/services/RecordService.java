@@ -7,6 +7,8 @@ import com.github.fcandiotti.pesquisamovie.entities.Record;
 import com.github.fcandiotti.pesquisamovie.repositories.GameRepository;
 import com.github.fcandiotti.pesquisamovie.repositories.RecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,5 +35,10 @@ public class RecordService {
 
         entity = repository.save(entity);
         return new RecordDTO(entity);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<RecordDTO> findByMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
+        return repository.findByMoments(minDate, maxDate, pageRequest).map(RecordDTO::new);
     }
 }
