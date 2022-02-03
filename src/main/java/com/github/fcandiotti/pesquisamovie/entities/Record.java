@@ -46,11 +46,11 @@ public class Record implements Serializable {
         this.name = name;
     }
 
-    public Integer getEge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setEge(Integer ege) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
